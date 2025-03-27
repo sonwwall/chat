@@ -15,3 +15,9 @@
 2025-03-27 22:15:47	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Database.go:27	数据库链接成功
 2025-03-27 22:15:47	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Database.go:39	redis连接成功
 2025-03-27 22:15:47	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/cmd/server/main.go:15	服务正在启动......
+2025-03-28 00:48:42	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Logger.go:53	日志组件初始化成功
+2025-03-28 00:48:42	[31mFATAL[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Database.go:24	数据库连接失败Error 1049 (42000): Unknown database 'chatroom'
+2025-03-28 00:52:35	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Logger.go:53	日志组件初始化成功
+2025-03-28 00:52:35	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Database.go:27	数据库链接成功
+2025-03-28 00:52:35	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Database.go:39	redis连接成功
+2025-03-28 00:52:35	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/cmd/server/main.go:15	服务正在启动......
