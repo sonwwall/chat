@@ -1,0 +1,7 @@
+2025-03-27 19:26:29	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Logger.go:53	日志组件初始化成功
+2025-03-27 19:26:29	[31mFATAL[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Database.go:24	数据库连接失败invalid DSN: missing the slash separating the database name
+2025-03-27 19:31:26	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Logger.go:53	日志组件初始化成功
+2025-03-27 19:31:26	[31mFATAL[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Database.go:24	数据库连接失败invalid DSN: missing the slash separating the database name
+2025-03-27 19:33:21	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Logger.go:53	日志组件初始化成功
+2025-03-27 19:33:21	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Database.go:27	数据库链接成功
+2025-03-27 19:33:22	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Database.go:39	redis连接成功

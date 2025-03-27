@@ -1,0 +1,16 @@
+ZapConfig:
+  Filename: "zap.log"
+  MaxSize: 5
+  MaxAge: 30
+  MaxBackups: 1000
+
+DatabaseConfig:
+  MysqlConfig:
+    Username: "root"
+    Password: "123456"
+    Addr: "127.0.0.1:3307"
+    DB: "chatroom"
+  RedisConfig:
+    Addr: "127.0.0.1:6379"
+    Password: ""
+    DB: 0
