@@ -1,15 +1,24 @@
 package router
 
-import "github.com/gin-gonic/gin"
+import (
+	"chat/internal/global"
+	"chat/internal/handler/http"
+	"chat/internal/repository"
+	"chat/internal/service"
+	"github.com/gin-gonic/gin"
+)
 
 func Router() *gin.Engine {
 	r := gin.Default()
 
-	r.POST("/test", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "hello world",
-		})
-	})
+	userRepo := repository.NewUserRepository(global.Mysql)
+	userService := service.NewUserService(userRepo)
+	userHandler := http.NewUserHandler(userService)
+
+	userGroup := r.Group("/user")
+	{
+		userGroup.POST("/register", userHandler.UserRegister)
+	}
 
 	return r
 }
