@@ -7,8 +7,10 @@ import (
 	myerrors "chat/pkg/errors"
 	"chat/pkg/response"
 	"github.com/gin-gonic/gin"
+	"github.com/goccy/go-json"
 	"github.com/gorilla/websocket"
 	"gorm.io/gorm"
+	"log"
 	"net/http"
 	"strconv"
 	"time"
@@ -49,6 +51,8 @@ func (c *ChatController) ConnectWebSocket(ctx *gin.Context) {
 	}
 	ws.HubInstance.Register <- client
 
+	go c.messageService.SubscribeMessages(uint(roomID))
+
 	//连接维持协程
 	go func() {
 		defer func() {
@@ -56,9 +60,27 @@ func (c *ChatController) ConnectWebSocket(ctx *gin.Context) {
 			_ = conn.Close()
 		}()
 		for {
-			if _, _, err := conn.ReadMessage(); err != nil {
+			_, msgBytes, err := conn.ReadMessage()
+			if err != nil {
 				break
 			}
+			var msg model.Message
+			json.Unmarshal(msgBytes, &msg)
+			msg.UserID = userID
+			msg.RoomID = uint(roomID)
+			msg.CreatedAt = time.Now()
+
+			//msg=model.Message{
+			//	UserID: userID,
+			//	RoomID: uint(roomID),
+			//	Content: string(msgBytes),
+			//	CreatedAt: time.Now(),
+			//}
+			if err := c.db.Create(&msg).Error; err != nil {
+				log.Println(err.Error())
+			}
+			_ = c.messageService.PublishMessage(uint(roomID), msg)
+
 		}
 	}()
 

@@ -53,3 +53,15 @@
 2025-03-29 18:47:47	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Database.go:27	数据库链接成功
 2025-03-29 18:47:47	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Database.go:39	redis连接成功
 2025-03-29 18:47:47	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/cmd/server/main.go:19	服务正在启动......
+2025-03-29 19:38:50	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Logger.go:53	日志组件初始化成功
+2025-03-29 19:38:50	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Database.go:27	数据库链接成功
+2025-03-29 19:38:50	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Database.go:39	redis连接成功
+2025-03-29 19:38:50	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/cmd/server/main.go:19	服务正在启动......
+2025-03-29 20:03:53	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Logger.go:53	日志组件初始化成功
+2025-03-29 20:03:53	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Database.go:27	数据库链接成功
+2025-03-29 20:03:53	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Database.go:39	redis连接成功
+2025-03-29 20:03:53	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/cmd/server/main.go:19	服务正在启动......
+2025-03-29 20:31:14	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Logger.go:53	日志组件初始化成功
+2025-03-29 20:31:14	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Database.go:27	数据库链接成功
+2025-03-29 20:31:14	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/initialize/Database.go:39	redis连接成功
+2025-03-29 20:31:14	[34mINFO[0m	C:/Users/sonwg/GolandProjects/chat/cmd/server/main.go:19	服务正在启动......
