@@ -12,6 +12,8 @@ var (
 	ErrCodeUserNotExisted = 4007 //用户不存在
 	ErrCodePasswordWrong  = 4008 //密码错误
 	ErrCodeLoginFail      = 4009 //登陆失败
+	ErrCodeUpdateFail     = 4010 //协议升级失败
+	ErrCodeDatabaseError  = 4011 //数据库存入失败
 )
 
 var (

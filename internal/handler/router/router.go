@@ -1,8 +1,10 @@
 package router
 
 import (
+	"chat/internal/controllers"
 	"chat/internal/global"
 	"chat/internal/handler/http"
+	"chat/internal/middleware"
 	"chat/internal/repository"
 	"chat/internal/service"
 	"github.com/gin-gonic/gin"
@@ -20,6 +22,13 @@ func Router() *gin.Engine {
 		userGroup.POST("/register", userHandler.UserRegister)
 		userGroup.POST("/login", userHandler.UserLogin)
 	}
+
+	messageGroup := r.Group("/message")
+	messageGroup.Use(middleware.JwtAuthMiddleware())
+	ms := service.NewMessageService(global.Redis)
+	chatController := controllers.NewChatController(global.Mysql, ms)
+	messageGroup.GET("/chat/rooms/:room_id/connect", chatController.ConnectWebSocket)
+	messageGroup.POST("/chat/messages", chatController.SendMessage)
 
 	return r
 }
