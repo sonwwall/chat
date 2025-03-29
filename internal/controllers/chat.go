@@ -70,16 +70,11 @@ func (c *ChatController) ConnectWebSocket(ctx *gin.Context) {
 			msg.RoomID = uint(roomID)
 			msg.CreatedAt = time.Now()
 
-			//msg=model.Message{
-			//	UserID: userID,
-			//	RoomID: uint(roomID),
-			//	Content: string(msgBytes),
-			//	CreatedAt: time.Now(),
-			//}
 			if err := c.db.Create(&msg).Error; err != nil {
 				log.Println(err.Error())
 			}
 			_ = c.messageService.PublishMessage(uint(roomID), msg)
+			log.Println("我是", msg.UserID, "，我发送了一次消息")
 
 		}
 	}()

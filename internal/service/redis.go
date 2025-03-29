@@ -6,6 +6,8 @@ import (
 	"context"
 	"github.com/go-redis/redis/v8"
 	"github.com/goccy/go-json"
+	"log"
+	"sync"
 )
 
 type MessageService struct {
@@ -17,7 +19,7 @@ func NewMessageService(r *redis.Client) *MessageService {
 }
 
 func (s *MessageService) PublishMessage(roomID uint, msg model.Message) error {
-	data, _ := json.Marshal(msg)  //序列化消息
+	data, _ := json.Marshal(msg) //序列化消息
 	return s.redisClient.Publish( //发布到redis频道
 		context.Background(),
 		"chat:room:"+string(roomID), //频道名格式
@@ -25,11 +27,17 @@ func (s *MessageService) PublishMessage(roomID uint, msg model.Message) error {
 	).Err()
 }
 
+var subMutex sync.Mutex
+
 func (s *MessageService) SubscribeMessages(roomID uint) {
+	subMutex.Lock()
+	defer subMutex.Unlock()
+
 	pubsub := s.redisClient.Subscribe( //订阅指定房间频道
 		context.Background(),
 		"chat:room:"+string(roomID),
 	)
+	log.Println("我是房间", roomID, "我被订阅了")
 
 	defer pubsub.Close()
 
