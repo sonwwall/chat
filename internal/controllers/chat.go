@@ -54,6 +54,7 @@ func (c *ChatController) ConnectWebSocket(ctx *gin.Context) {
 	go c.messageService.SubscribeMessages(uint(roomID))
 
 	//连接维持协程
+
 	go func() {
 		defer func() {
 			ws.HubInstance.Unregister <- client
@@ -73,7 +74,10 @@ func (c *ChatController) ConnectWebSocket(ctx *gin.Context) {
 			if err := c.db.Create(&msg).Error; err != nil {
 				log.Println(err.Error())
 			}
-			_ = c.messageService.PublishMessage(uint(roomID), msg)
+			err = c.messageService.PublishMessage(uint(roomID), msg)
+			if err != nil {
+				log.Println(err.Error())
+			}
 			log.Println("我是", msg.UserID, "，我发送了一次消息")
 
 		}
