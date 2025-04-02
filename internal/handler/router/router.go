@@ -23,12 +23,12 @@ func Router() *gin.Engine {
 		userGroup.POST("/login", userHandler.UserLogin)
 	}
 
-	messageGroup := r.Group("/message")
+	messageGroup := r.Group("/chat")
 	messageGroup.Use(middleware.JwtAuthMiddleware())
 	ms := service.NewMessageService(global.Redis)
 	chatController := controllers.NewChatController(global.Mysql, ms)
-	messageGroup.GET("/chat/rooms/:room_id/connect", chatController.ConnectWebSocket)
-	messageGroup.POST("/chat/messages", chatController.SendMessage)
+	messageGroup.GET("/rooms/:room_id/connect", chatController.ConnectWebSocket)
+	messageGroup.POST("/messages", chatController.SendMessage)
 
 	return r
 }

@@ -35,6 +35,7 @@ func (h *Hub) Run() {
 		case client := <-h.Register: //触发条件：当有新客户端注册时
 			h.Mutex.Lock()
 			h.Clients[client] = true //将新客户端加入map中
+			log.Println("New client ", client.UserID, " connected")
 			h.Mutex.Unlock()
 		case client := <-h.Unregister:
 			h.Mutex.Lock()
@@ -44,6 +45,7 @@ func (h *Hub) Run() {
 					log.Println(err.Error())
 				}
 				delete(h.Clients, client) //将该client从map中移除
+				log.Println("Client ", client.UserID, " Disconnected")
 			}
 			h.Mutex.Unlock()
 		case message := <-h.Broadcast:
