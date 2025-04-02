@@ -17,7 +17,7 @@ func main() {
 	go ws.HubInstance.Run()
 
 	global.Logger.Info("服务正在启动......")
-	if err := router.Run("localhost:8080"); err != nil {
+	if err := router.Run("0.0.0.0:8080"); err != nil {
 		global.Logger.Fatal("服务启动失败" + err.Error())
 	}
 }

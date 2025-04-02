@@ -8,9 +8,9 @@ DatabaseConfig:
   MysqlConfig:
     Username: "root"
     Password: "123456"
-    Addr: "127.0.0.1:3307"
+    Addr: "mysql:3306"
     DB: "chatroom"
   RedisConfig:
-    Addr: "127.0.0.1:6379"
+    Addr: "redis:6379"
     Password: ""
     DB: 0

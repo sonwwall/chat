@@ -33,11 +33,13 @@ RUN apk --no-cache add ca-certificates tzdata && \
 # 切换到应用目录
 WORKDIR /app
 
+RUN mkdir -p /app/configs && chown appuser:appgroup /app/configs
+
 # 从构建阶段拷贝可执行文件
 COPY --from=builder --chown=appuser:appgroup /app/chat-app .
 
 # 从构建阶段拷贝配置文件（如有需要）
-# COPY --from=builder /app/config.yaml .
+COPY --from=builder --chown=appuser:appgroup /app/configs/config.yaml ./configs/
 
 # 声明使用的端口
 EXPOSE 8080
@@ -46,4 +48,4 @@ EXPOSE 8080
 USER appuser
 
 # 启动应用程序（参数可通过环境变量覆盖）
-CMD ["./chat"]
+CMD ["./chat-app"]
